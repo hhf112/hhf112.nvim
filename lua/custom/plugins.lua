@@ -1,4 +1,29 @@
 local plugins = {
+  --LSP
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "clangd",
+        "clang-format",
+        "rust-analyzer",
+        "codelldb",
+        "typescript-language-server",
+        "pyright",
+        "gopls",
+        "tailwindcss-language-server",
+      }
+    }
+  },
+
+  --FILE MANAGEMENT
   {
     'stevearc/oil.nvim',
     ---@module 'oil'
@@ -15,13 +40,31 @@ local plugins = {
     end
   },
   {
-    "nyoom-engineering/oxocarbon.nvim",
-    lazy = true,
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
+
+    },
+    config = function()
+      return require "custom.configs.telescope"
+    end,
   },
+
+
+  --THEMES & UI
   {
     "xiyaowong/transparent.nvim",
     lazy = false,
   },
+
+  --DEV 
+  -- 
+  --
+  --
+
+  --DEBUGGER UI
   {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
@@ -53,53 +96,12 @@ local plugins = {
     end
   },
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "clangd",
-        "clang-format",
-        "rust-analyzer",
-        "codelldb",
-        "typescript-language-server",
-        "pyright",
-        "gopls",
-        "tailwindcss-language-server",
-      }
-    }
-  },
-  {
     "mfussenegger/nvim-dap",
     config = function(_, _)
       require("core.utils").load_mappings("dap")
     end
   },
   { "nvim-neotest/nvim-nio" },
-
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' }
-
-    },
-    config = function()
-      return require "custom.configs.telescope"
-    end,
-  },
-
-  --dev
-  -- {
-  --
-  -- }
-
 }
 
 return plugins

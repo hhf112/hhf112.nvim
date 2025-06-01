@@ -16,9 +16,7 @@ vim.opt.termguicolors = true
 
 
 
---
---floating terminal
---keymaps to get out of terminal
+--FLOATERMINAL KEYBINDS
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true })
 local toggleTerminal = require("custom.floaterminal")
 vim.api.nvim_create_user_command("Floaterminal", toggleTerminal, {})
