@@ -11,6 +11,9 @@ M.on_attach = function(client, bufnr)
   if client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client)
   end
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
 end
 
 -- disable semantic tokens

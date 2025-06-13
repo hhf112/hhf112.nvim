@@ -58,9 +58,13 @@ local plugins = {
     "xiyaowong/transparent.nvim",
     lazy = false,
   },
+  {
+    "themaxmarchuk/tailwindcss-colors.nvim",
+    lazy = false,
+  },
 
-  --DEV 
-  -- 
+  --DEV
+  --
   --
   --
 
