@@ -2,6 +2,13 @@ vim.opt.relativenumber = true
 vim.opt.swapfile = false
 
 
+-- restore literal <Esc> behavior in Insert and Select modes
+vim.keymap.set('i', '<Esc>', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set('s', '<Esc>', '<Esc>', { noremap = true, silent = true })
+
+
+
+
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()
