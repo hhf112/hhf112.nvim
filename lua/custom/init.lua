@@ -10,14 +10,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
--- COPILOT THING it overrides the defaults
+-- COPILOT OVERRIDE
 -- restore literal <Esc> behavior in Insert and Select modes
 vim.keymap.set('i', '<Esc>', '<Esc>', { noremap = true, silent = true })
 vim.keymap.set('s', '<Esc>', '<Esc>', { noremap = true, silent = true })
 
 
 
----ME THINGS
+---CONVINIENCE
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
 vim.opt.termguicolors = true
