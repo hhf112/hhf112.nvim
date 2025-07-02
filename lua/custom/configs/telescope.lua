@@ -1,4 +1,6 @@
 local builtin = require("telescope.builtin")
+
+---CUSTOM KEYBINDS
 vim.keymap.set("n", "<space>fd", builtin.find_files)
 vim.keymap.set("n", "<space>fht", builtin.help_tags)
 vim.keymap.set("n", "<space>fc",
@@ -9,8 +11,6 @@ vim.keymap.set("n", "<space>fc",
     builtin.find_files(opts)
   end
 )
-
-
 vim.keymap.set("n", "<space>fh",
   function()
     local opts = require('telescope.themes').get_dropdown({
@@ -19,6 +19,8 @@ vim.keymap.set("n", "<space>fh",
     builtin.find_files(opts)
   end
 )
+
+--CONFIG
 require('telescope').setup {
   defaults = {
     file_ignore_patterns = {
