@@ -1,4 +1,4 @@
---simple tutorial by TJ
+--simple tutorial 
 
 local mult = 0.7;
 --store the state if opened once

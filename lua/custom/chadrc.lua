@@ -1,11 +1,10 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
-  theme = "kanagawa",
-  relativenumber = false,
-  number = true,
-}
+-- comment to prevent core implementation overrides with plugins
+-- M.ui = {
+--   theme = "kanagawa",
+-- }
 M.plugins = "custom.plugins"
 M.mappings = require("custom.mappings")
 return M
