@@ -4,10 +4,10 @@ vim.opt.swapfile = false
 
 --remove windows carriage return on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function()
-        vim.cmd("silent! %s/\r//g")
-    end,
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! %s/\r//g")
+  end,
 })
 
 -- COPILOT OVERRIDE
@@ -34,4 +34,5 @@ vim.keymap.set({ "t", "n" }, "<Space>tr", toggleTerminal, { noremap = true })
 vim.keymap.set("n", "<C-O>", function()
   vim.cmd("Oil")
   vim.api.nvim_feedkeys("_", "n", false) --directory of current buffer
-end, {noremap = true})
+end, { noremap = true })
+

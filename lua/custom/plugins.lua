@@ -101,7 +101,7 @@ local plugins = {
   {
     "rebelot/kanagawa.nvim", ----current
     priority = 1000,
-    lazy = false,
+    lazy = true,
     config = function()
       require("kanagawa").setup({
         overrides = function(colors)
@@ -114,17 +114,6 @@ local plugins = {
           }
         end,
       })
-      vim.cmd("colorscheme kanagawa-wave")
-      --
-      --Default Telescope Override
-      vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TelescopePromptNormal", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TelescopePromptBorder", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TelescopeResultsNormal", { link = "Normal" })
-      vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { link = "Normal" })
-      --Colorless cursorline
-      vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
     end,
   },
 
