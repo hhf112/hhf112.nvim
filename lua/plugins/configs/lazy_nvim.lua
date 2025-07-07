@@ -11,6 +11,13 @@ return {
     },
   },
 
+  git = {
+    url_format = "git@github.com:%s.git"
+  },
+  rocks = {
+    enabled = false
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {
