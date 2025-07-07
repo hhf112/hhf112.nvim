@@ -1,4 +1,5 @@
 --QUICK SETTINGS
+vim.g.nvchad_theme = nil
 vim.opt.relativenumber = false
 vim.opt.swapfile = false
 
@@ -15,6 +16,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.keymap.set('i', '<Esc>', '<Esc>', { noremap = true, silent = true })
 vim.keymap.set('s', '<Esc>', '<Esc>', { noremap = true, silent = true })
 
+vim.keymap.set({"n", "t"}, "<leader>tv", "<cmd>ToggleTerm direction=vertical size=40<CR>", { desc = "Toggle vertical terminal (80 columns)" })
+
+vim.keymap.set('n', '<C-\\>', '<>ToggleTerm size=40 dir=' .. vim.fn.getcwd() .. ' direction=horizontal name=somethingelse', { noremap = true, silent = true })
 
 
 ---CONVINIENCE

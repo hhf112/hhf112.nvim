@@ -9,30 +9,31 @@ local plugins = {
   --AI
   {
     "supermaven-inc/supermaven-nvim",
-    lazy = true,
+    lazy = false,
     config = function()
       require("supermaven-nvim").setup(
         {
           keymaps = {
             accept_suggestion = "<C-]>",
-            clear_suggestion = "<C-]]>",
+            clear_suggestion = "<C-[>",
             accept_word = "<C-l>",
           },
-          color = {
+          colors = {
             suggestion_color = "#4c4c55",
             cterm = 244,
           },
+          ignore_filetypes = { cpp = true },
           log_level = "info",                -- set to "off" to disable logging completely
           disable_inline_completion = false, -- disables inline completion for use with cmp
           disable_keymaps = false,           -- disables built in keymaps for more manual control
           condition = function()
-            return true
+            return false
           end -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
         })
     end,
   },
 
-  --LSP, I use cmp with under nvchad
+  --LSP
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -41,7 +42,7 @@ local plugins = {
     end,
   },
   {
-    "mason-org/mason.nvim",
+    "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "clangd",
@@ -61,7 +62,7 @@ local plugins = {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
     dependencies = {
-      "willaimboman/mason.nvim",
+      "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",
     },
     opts = {
@@ -151,6 +152,26 @@ local plugins = {
     config = function()
       require "custom.configs.oil"
     end
+  },
+  --UTILITY
+  {
+    "akinsho/toggleterm.nvim",
+    config = true,
+    lazy = false,
+    cmd = "ToggleTerm",
+    keys = {
+      { "<C-\\>", "<cmd>ToggleTerm<cr>", desc = "Toggle floating terminal" }
+    },
+    opts = { 
+      open_mapping = [[<C-\\>]],
+      direction = "horizontal",
+      shade_filetypes = {},
+      hide_numbers = true,
+      insert_mappings = true,
+      terminal_mappings = true,
+      start_in_insert = true,
+      close_on_exit = true,
+    },
   },
 }
 
