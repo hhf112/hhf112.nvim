@@ -10,17 +10,28 @@ local servers = {
   "pyright",
   "gopls",
   "tailwindcss",
+  "matlab",
 }
 
+vim.lsp.config("matlab", {
+  filetypes = { "matlab" },
+  cmd = { "node", "/home/hrsh/.local/share/nvim/mason/packages/matlab-language-server/out/index.js", "--stdio" },
+  -- root_dir = function(fname)
+  --   -- use .git folder if present, fallback to file's folder
+  --   local git = vim.fs.find(".git", { path = fname, upward = true })[1]
+  --   return git and vim.fs.dirname(git) or vim.fs.dirname(fname)
+  -- end,
+})
+
 vim.lsp.config("html", {
-  cmd = { 'vscode-html-language-server', '--stdio' },
-  filetypes = { 'html', 'templ' },
-  root_markers = { 'package.json', '.git' },
+  cmd = { "vscode-html-language-server", "--stdio" },
+  filetypes = { "html", "templ" },
+  root_markers = { "package.json", ".git" },
   settings = {},
   init_options = {
     provideFormatter = true,
     embeddedLanguages = { css = true, javascript = true },
-    configurationSection = { 'html', 'css', 'javascript' },
+    configurationSection = { "html", "css", "javascript" },
   },
 })
 
